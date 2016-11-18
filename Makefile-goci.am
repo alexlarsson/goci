@@ -1,0 +1,51 @@
+# Copyright (C) 2016 Alexander Larsson <alexl@redhat.com>
+#
+# This library is free software; you can redistribute it and/or
+# modify it under the terms of the GNU Lesser General Public
+# License as published by the Free Software Foundation; either
+# version 2 of the License, or (at your option) any later version.
+#
+# This library is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+# Lesser General Public License for more details.
+#
+# You should have received a copy of the GNU Lesser General Public
+# License along with this library; if not, write to the
+# Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+# Boston, MA 02111-1307, USA.
+
+EXTRA_DIST += \
+	README.md \
+	COPYING \
+	$(NULL)
+
+libgoci_la_SOURCES = \
+	goci.h \
+	goci-json.h \
+	goci-json.c \
+	goci-versioned.h \
+	goci-versioned.c \
+	goci-manifest.h \
+	goci-manifest.c \
+	goci-descriptor.h \
+	goci-descriptor.c \
+	goci-image.h \
+	goci-image.c \
+	goci-image-rootfs.h \
+	goci-image-rootfs.c \
+	goci-image-config.h \
+	goci-image-config.c \
+	goci-image-history.h \
+	goci-image-history.c \
+	goci-manifest-platform.h \
+	goci-manifest-platform.c \
+	goci-manifest-descriptor.h \
+	goci-manifest-descriptor.c \
+	goci-manifest-list.h \
+	goci-manifest-list.c \
+	$(NULL)
+
+libgoci_la_CFLAGS = $(AM_CFLAGS) $(JSON_CFLAGS)
+libgoci_la_LDFLAGS = -avoid-version -Bsymbolic-functions -export-symbols-regex "^goci_" -no-undefined -export-dynamic
+libgoci_la_LIBADD = $(JSON_LIBS)
